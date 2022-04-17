@@ -167,3 +167,5 @@ dataset/
 *.mp4
 *.png
 *.jpg
+
+run_train.sh
