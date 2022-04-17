@@ -57,6 +57,7 @@ class Fusion(data.Dataset):
                     positions_3d.append(pos_3d)
                 anim['positions_3d'] = positions_3d
 
+        
         keypoints = np.load(self.root_path + 'data_2d_' + self.data_type + '_' + self.keypoints_name + '.npz',allow_pickle=True)
         keypoints_symmetry = keypoints['metadata'].item()['keypoints_symmetry']
 

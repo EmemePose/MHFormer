@@ -1,9 +1,14 @@
 import torch
 import torch.nn as nn
 from einops import rearrange
-from model.module.trans import Transformer as Transformer_s
-from model.module.trans_hypothesis import Transformer
+import sys
+import os.path as osp
 
+sys.path.append(osp.dirname(__file__))
+sys.path.append(osp.join(osp.dirname(__file__), '..'))
+
+from module.trans import Transformer as Transformer_s
+from module.trans_hypothesis import Transformer
 class Model(nn.Module):
     def __init__(self, args):
         super().__init__()

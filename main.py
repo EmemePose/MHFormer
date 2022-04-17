@@ -11,7 +11,8 @@ import torch.optim as optim
 from common.opt import opts
 from common.utils import *
 from common.load_data_hm36 import Fusion
-from common.h36m_dataset import Human36mDataset
+# from common.h36m_dataset import Human36mDataset
+from common.h36m_dataset_modify import Human36mDataset
 from model.mhformer import Model
 
 opt = opts().parse()
@@ -103,10 +104,16 @@ if __name__ == '__main__':
 
     if opt.train:
         train_data = Fusion(opt=opt, train=True, dataset=dataset, root_path=root_path)
+
+        sub_idx = list(range(50000))
+        train_data = torch.utils.data.Subset(train_data, sub_idx)
+
         train_dataloader = torch.utils.data.DataLoader(train_data, batch_size=opt.batch_size,
                                                        shuffle=True, num_workers=int(opt.workers), pin_memory=True)
 
     test_data = Fusion(opt=opt, train=False, dataset=dataset, root_path =root_path)
+    sub_idx = list(range(50000))
+    test_data = torch.utils.data.Subset(test_data, sub_idx)
     test_dataloader = torch.utils.data.DataLoader(test_data, batch_size=opt.batch_size,
                                                   shuffle=False, num_workers=int(opt.workers), pin_memory=True)
 
