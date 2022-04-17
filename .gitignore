@@ -161,7 +161,7 @@ real_time_skes.py
 
 # ignore
 checkpoint/*
-!checkpoint/0411_1851_48_27/model_8_1166.pth
+!checkpoint/0411_1851_48_27
 data/
 dataset/
 *.mp4
